@@ -20,8 +20,10 @@ jobs:
          run: npm install
        - name: Install Salesforce CLI
          run: npm install @salesforce/cli --global
+       - name: Encrypt the server.key file using the below command
+         run: openssl enc -nosalt -aes-256-cbc -in ${{secrets.JWT_KEY_FILE}} -out ${{secrets.ENCRYPTED_KEY_FILE}} -k ${{secrets.KEY}} -iv ${{secrets.IV}}
        - name: Authorize with Salesforce Org
-         run: sf org login jwt --username sumatt1617-8tnr@force.com.dev --jwt-key-file assets/dev/server.key --client-id 3MVG9duA.sPEm7m8bEEHD0tEdO3cfTZ.zckjO5.w8y8ag74VunrNYWOkXOvRDYHsXvn1Ef0tp6lEb2IFuzHaM --alias dev --set-default --instance-irl https://test.salesforce.com
+         run: sf org login jwt --username ${{secrets.SF_USERNAME}} --jwt-key-file ${{secrets.JWT_KEY_FILE}} --client-id ${{secrets.SF_CLIENT_ID}} --alias dev --set-default --instance-url ${{secrets.SF_INSTANCE_URL}}
        - name: print user Information
          run: sf org display user -o dev     
     
