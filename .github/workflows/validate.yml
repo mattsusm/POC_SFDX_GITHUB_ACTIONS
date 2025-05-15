@@ -21,7 +21,7 @@ jobs:
        - name: Install Salesforce CLI
          run: npm install @salesforce/cli --global
        - name: Authorize with Salesforce Org
-         run: sf org login jwt --username sumatt1617-8tnr@force.com.dev --jwt-key-file assets/dev/server.key --client-id 3MVG9duA.sPEm7m8bEEHD0tEdO3cfTZ.zckjO5.w8y8ag74VunrNYWOkXOvRDYHsXvn1Ef0tp6lEb2IFuzHaM --alias dev --set-default --instance-irl https://test.salesforce.com
+         run: sf org login jwt --username sumatt1617-8tnr@force.com.dev --jwt-key-file assets/dev/server.key --client-id 3MVG9duA.sPEm7m8bEEHD0tEdO3cfTZ.zckjO5.w8y8ag74VunrNYWOkXOvRDYHsXvn1Ef0tp6lEb2IFuzHaM --alias dev --set-default --instance-url https://test.salesforce.com
        - name: print user Information
          run: sf org display user -o dev     
     
